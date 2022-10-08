@@ -7,8 +7,6 @@ const { SSE_ACTION, SSE_EVENT } = require("../constants")
 
 function AutoReloadContentScript(compiler) {
   return (req, res, next) => {
-    let closed = false
-
     const sse = new SseStream(req)
 
     sse.pipe(res)
@@ -30,34 +28,16 @@ function AutoReloadContentScript(compiler) {
         )
 
       if (shouldReload) {
-        sse.write(
-          {
-            data: {
-              action: SSE_ACTION.RELOAD_EXTENSION_CONTENT_SCRIPT,
-            },
-            event: SSE_EVENT.CONTENT_SCRIPT_COMPILED_SUCCESSFULLY,
+        sse.write({
+          data: {
+            action: SSE_ACTION.RELOAD_EXTENSION_CONTENT_SCRIPT,
           },
-          "utf8",
-          (err) => {
-            if (err) {
-              console.error(err)
-            }
-          }
-        )
+          event: SSE_EVENT.CONTENT_SCRIPT_COMPILED_SUCCESSFULLY,
+        })
       }
     }, 1000)
 
-    compiler.hooks.done.tap("auto-reload-extension", (stats) => {
-      // Do not execute the previous hook after disconnect.
-      if (!closed) {
-        autoReloadPlugin(stats)
-      }
-    })
-
-    res.on("close", () => {
-      closed = true
-      sse.unpipe(res)
-    })
+    compiler.hooks.done.tap("auto-reload-extension", autoReloadPlugin)
 
     next()
   }

@@ -1,5 +1,7 @@
 const { MESSAGE_FROM, MESSAGE_ACTION } = require("../constants")
-const log = require("logger").default.getLogger("content-script-auto-reload")
+const log = require("logger").default.getLogger(
+  "entry/content-script-auto-reload"
+)
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const shouldReload =
