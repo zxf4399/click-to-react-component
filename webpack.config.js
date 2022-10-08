@@ -2,13 +2,14 @@ const path = require("path")
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
 const fromPairs = require("lodash/fromPairs")
 const isNil = require("lodash/isNil")
 const omitBy = require("lodash/omitBy")
 const sortBy = require("lodash/sortBy")
 const toPairs = require("lodash/toPairs")
-const CopyPlugin = require("copy-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin")
 const webpack = require("webpack")
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin
@@ -148,6 +149,7 @@ module.exports = {
       ),
     },
     extensions: [".tsx", ".ts", ".js"],
+    plugins: [new TsconfigPathsPlugin()],
   },
   stats: ifDev("errors-only", "minimal"),
 }

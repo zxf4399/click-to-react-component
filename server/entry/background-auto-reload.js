@@ -5,19 +5,20 @@ const {
   MESSAGE_ACTION,
   SSE_ACTION,
 } = require("../constants")
+const log = require("logger").default.getLogger("background-auto-reload")
 
 const source = new EventSource(AUTO_RELOAD_URL)
 
 source.addEventListener("open", () => {
-  console.log("The connection has been established.")
+  log.info("The connection has been established.")
 })
 
 source.addEventListener("message", (event) => {
-  console.log("received a no event name message, data: ", event.data)
+  log.info("received a no event name message, data: ", event.data)
 })
 
 source.addEventListener("pause", () => {
-  console.log("received pause message from server, ready to close connection!")
+  log.info("received pause message from server, ready to close connection!")
   source.close()
 })
 
@@ -29,7 +30,7 @@ source.addEventListener(
       SSE_ACTION.RELOAD_EXTENSION_CONTENT_SCRIPT
 
     if (shouldReload) {
-      console.log("received the signal to reload chrome extension")
+      log.info("received the signal to reload chrome extension")
 
       chrome.tabs.query({}, (tabs) => {
         tabs.forEach((tab) => {
@@ -53,8 +54,9 @@ source.addEventListener(
                 ) {
                   received = true
                   source.close()
-                  console.log("reload extension")
+                  log.info("reload extension")
                   chrome.runtime.reload()
+                  log.info("reload tab")
                   chrome.tabs.reload()
                 }
               }
@@ -68,8 +70,8 @@ source.addEventListener(
 
 source.addEventListener("error", (event) => {
   if (event.target.readyState === 0) {
-    console.error("You need to open devServer first!")
+    log.error("You need to open devServer first!")
   } else {
-    console.error(event)
+    log.error(event)
   }
 })
