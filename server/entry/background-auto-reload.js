@@ -13,15 +13,6 @@ source.addEventListener("open", () => {
   log.info("The connection has been established.")
 })
 
-source.addEventListener("message", (event) => {
-  log.info("received a no event name message, data: ", event.data)
-})
-
-source.addEventListener("pause", () => {
-  log.info("received pause message from server, ready to close connection!")
-  source.close()
-})
-
 source.addEventListener(
   SSE_EVENT.CONTENT_SCRIPT_COMPILED_SUCCESSFULLY,
   (event) => {
@@ -56,8 +47,6 @@ source.addEventListener(
                   source.close()
                   log.info("reload extension")
                   chrome.runtime.reload()
-                  log.info("reload tab")
-                  chrome.tabs.reload()
                 }
               }
             )
@@ -67,11 +56,3 @@ source.addEventListener(
     }
   }
 )
-
-source.addEventListener("error", (event) => {
-  if (event.target.readyState === 0) {
-    log.error("You need to open devServer first!")
-  } else {
-    log.error(event)
-  }
-})
