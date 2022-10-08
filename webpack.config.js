@@ -139,6 +139,14 @@ module.exports = {
     return acc
   }, []),
   resolve: {
+    alias: {
+      ClickToComponent: path.resolve(
+        "node_modules",
+        "click-to-react-component",
+        "src",
+        "ClickToComponent"
+      ),
+    },
     extensions: [".tsx", ".ts", ".js"],
   },
   stats: ifDev("errors-only", "minimal"),

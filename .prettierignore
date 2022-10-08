@@ -1,8 +1,5 @@
 # Ignore artifacts:
 build
 
-# click-to-component
-src/content-script/click-to-component
-
 # pnpm
 pnpm-lock.yaml
