@@ -1,4 +1,7 @@
 {
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": ["http://localhost:*/*"],
@@ -11,9 +14,7 @@
     "128": "icon128.png"
   },
   "manifest_version": 3,
-  "name": "click-to-react-component",
   "permissions": ["tabs"],
-  "version": "1.0.0",
   "web_accessible_resources": [
     {
       "matches": ["http://localhost:*/*"],
