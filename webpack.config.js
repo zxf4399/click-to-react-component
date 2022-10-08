@@ -2,13 +2,18 @@ const path = require("path")
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const fromPairs = require("lodash/fromPairs")
 const isNil = require("lodash/isNil")
 const omitBy = require("lodash/omitBy")
+const sortBy = require("lodash/sortBy")
+const toPairs = require("lodash/toPairs")
 const CopyPlugin = require("copy-webpack-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
 const webpack = require("webpack")
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+
+const pkg = require("./package.json")
 
 // const { HMR_URL } = require('../constants')
 
@@ -72,8 +77,36 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve("src", "manifest", `${ifDev("dev", "prod")}.json`),
-          to: "manifest.json",
+          from: path.resolve("src", "manifest.json"),
+          transform: (content) => {
+            let manifest = JSON.parse(content.toString())
+
+            manifest = fromPairs(
+              sortBy(
+                toPairs(
+                  omitBy(
+                    {
+                      ...manifest,
+                      description: pkg.description,
+                      name: pkg.name,
+                      version: pkg.version,
+                    },
+                    (_value, key) => {
+                      if (!isDev) {
+                        if (key === "background") {
+                          return true
+                        }
+                      }
+
+                      return false
+                    }
+                  )
+                )
+              )
+            )
+
+            return JSON.stringify(manifest, null, 2)
+          },
         },
         {
           from: path.resolve("src", "icons"),
