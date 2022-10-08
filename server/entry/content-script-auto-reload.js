@@ -10,10 +10,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       action: MESSAGE_ACTION.RELOAD_EXTENSION,
       from: MESSAGE_FROM.CONTENT_SCRIPT,
     })
-
-    // wait for the background script to reload the extension
-    setTimeout(() => {
-      window.location.reload()
-    }, 100)
   }
 })
