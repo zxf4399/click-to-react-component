@@ -5,7 +5,7 @@ const {
   MESSAGE_ACTION,
   SSE_ACTION,
 } = require("../constants")
-const log = require("logger").default.getLogger("background-auto-reload")
+const log = require("logger").default.getLogger("entry/background-auto-reload")
 
 const source = new EventSource(AUTO_RELOAD_URL)
 
@@ -26,7 +26,6 @@ source.addEventListener(
       chrome.tabs.query({}, (tabs) => {
         tabs.forEach((tab) => {
           if (tab.id) {
-            let received = false
             chrome.tabs.sendMessage(
               tab.id,
               {
@@ -39,12 +38,9 @@ source.addEventListener(
                 const { from, action } = res
 
                 if (
-                  !received &&
                   from === MESSAGE_FROM.CONTENT_SCRIPT &&
                   action === MESSAGE_ACTION.RELOAD_EXTENSION
                 ) {
-                  received = true
-                  source.close()
                   log.info("reload extension")
                   chrome.runtime.reload()
                 }
