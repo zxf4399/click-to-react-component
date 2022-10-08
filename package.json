@@ -13,12 +13,10 @@
     "*.{ts,tsx,js,jsx}": "eslint --fix"
   },
   "dependencies": {
-    "@floating-ui/react-dom-interactions": "^0.3.1",
-    "htm": "^3.1.0",
+    "click-to-react-component": "^1.0.8",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-merge-refs": "^1.1.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
