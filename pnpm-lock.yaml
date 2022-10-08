@@ -28,6 +28,8 @@ specifiers:
   husky: ^8.0.1
   lint-staged: ^13.0.3
   lodash: ^4.17.21
+  loglevel: ^1.8.0
+  loglevel-plugin-prefix: ^0.8.4
   nodemon: ^2.0.20
   prettier: 2.7.1
   react: ^18.2.0
@@ -35,6 +37,7 @@ specifiers:
   react-refresh: ^0.14.0
   ssestream: ^1.1.0
   ts-node: ^10.9.1
+  tsconfig-paths-webpack-plugin: ^4.0.0
   typescript: ^4.8.4
   webpack: ^5.74.0
   webpack-bundle-analyzer: ^4.6.1
@@ -46,6 +49,8 @@ specifiers:
 dependencies:
   click-to-react-component: 1.0.8_rj7ozvcq3uehdlnj3cbwzbi5ce
   lodash: 4.17.21
+  loglevel: 1.8.0
+  loglevel-plugin-prefix: 0.8.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -80,6 +85,7 @@ devDependencies:
   react-refresh: 0.14.0
   ssestream: 1.1.0
   ts-node: 10.9.1_xtdkmayvpbwqd3kc4kczaw2zvm
+  tsconfig-paths-webpack-plugin: 4.0.0
   typescript: 4.8.4
   webpack: 5.74.0_webpack-cli@4.10.0
   webpack-bundle-analyzer: 4.6.1
@@ -4084,6 +4090,15 @@ packages:
       wrap-ansi: 6.2.0
     dev: true
 
+  /loglevel-plugin-prefix/0.8.4:
+    resolution: {integrity: sha512-WpG9CcFAOjz/FtNht+QJeGpvVl/cdR6P0z6OcXSkr8wFJOsV2GRj2j10JLfjuA4aYkcKCNIEqRGCyTife9R8/g==}
+    dev: false
+
+  /loglevel/1.8.0:
+    resolution: {integrity: sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==}
+    engines: {node: '>= 0.6.0'}
+    dev: false
+
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -4182,6 +4197,10 @@ packages:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
       brace-expansion: 1.1.11
+    dev: true
+
+  /minimist/1.2.6:
+    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
   /mrmime/1.0.1:
@@ -5225,6 +5244,11 @@ packages:
       ansi-regex: 6.0.1
     dev: true
 
+  /strip-bom/3.0.0:
+    resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
+    engines: {node: '>=4'}
+    dev: true
+
   /strip-final-newline/2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
     engines: {node: '>=6'}
@@ -5376,6 +5400,24 @@ packages:
       typescript: 4.8.4
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
+    dev: true
+
+  /tsconfig-paths-webpack-plugin/4.0.0:
+    resolution: {integrity: sha512-fw/7265mIWukrSHd0i+wSwx64kYUSAKPfxRDksjKIYTxSAp9W9/xcZVBF4Kl0eqQd5eBpAQ/oQrc5RyM/0c1GQ==}
+    engines: {node: '>=10.13.0'}
+    dependencies:
+      chalk: 4.1.2
+      enhanced-resolve: 5.10.0
+      tsconfig-paths: 4.1.0
+    dev: true
+
+  /tsconfig-paths/4.1.0:
+    resolution: {integrity: sha512-AHx4Euop/dXFC+Vx589alFba8QItjF+8hf8LtmuiCwHyI4rHXQtOOENaM8kvYf5fR0dRChy3wzWIZ9WbB7FWow==}
+    engines: {node: '>=6'}
+    dependencies:
+      json5: 2.2.1
+      minimist: 1.2.6
+      strip-bom: 3.0.0
     dev: true
 
   /tslib/1.14.1:
