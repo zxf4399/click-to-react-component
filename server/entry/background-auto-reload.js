@@ -45,6 +45,7 @@ source.addEventListener(
                 if (chrome.runtime.lastError && !res) return
 
                 const { from, action } = res
+
                 if (
                   !received &&
                   from === MESSAGE_FROM.CONTENT_SCRIPT &&
@@ -54,6 +55,7 @@ source.addEventListener(
                   source.close()
                   console.log("reload extension")
                   chrome.runtime.reload()
+                  chrome.tabs.reload()
                 }
               }
             )
