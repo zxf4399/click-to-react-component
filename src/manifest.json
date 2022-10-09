@@ -4,7 +4,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://localhost:*/*"],
+      "matches": ["http://localhost/*"],
       "js": ["content-script.js"]
     }
   ],
@@ -17,7 +17,7 @@
   "permissions": ["tabs"],
   "web_accessible_resources": [
     {
-      "matches": ["http://localhost:*/*"],
+      "matches": ["http://localhost/*"],
       "resources": ["script.js"]
     }
   ]
