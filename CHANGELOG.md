@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/zxf4399/click-to-react-component/compare/v1.0.0...v1.0.1) (2022-10-09)
+
+
+### Bug Fixes
+
+* **manifest:** use http://localhost/* replace http://localhost:*/* ([28f3515](https://github.com/zxf4399/click-to-react-component/commit/28f3515e7ee7378c011f233e343233d5fd5dc166))
+
 ## 1.0.0 (2022-10-09)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "click-to-react-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Option+Click React components in your browser to instantly open the source in VS Code(Browser plug-in version)",
   "scripts": {
     "analyze": "cross-env ANALYZE=true webpack",
