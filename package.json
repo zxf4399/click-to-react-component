@@ -4,7 +4,7 @@
   "description": "Option+Click React components in your browser to instantly open the source in VS Code(Browser plug-in version)",
   "scripts": {
     "analyze": "cross-env ANALYZE=true webpack",
-    "build": "cross-env NODE_ENV=production webpack && node script/zip.js",
+    "build": "cross-env NODE_ENV=production webpack",
     "prepare": "husky install",
     "start": "nodemon"
   },
@@ -45,7 +45,6 @@
     "express": "^4.18.1",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "husky": "^8.0.1",
-    "jszip": "^3.10.1",
     "lint-staged": "^13.0.3",
     "nodemon": "^2.0.20",
     "prettier": "2.7.1",
