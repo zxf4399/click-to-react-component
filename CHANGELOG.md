@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/zxf4399/click-to-react-component/compare/v1.0.1...v1.0.2) (2022-10-28)
+
+
+### Bug Fixes
+
+* change manifest.json field description logic ([2a6c79d](https://github.com/zxf4399/click-to-react-component/commit/2a6c79d399058d375ee384dd016cc51c33e76728))
+
 ## [1.0.1](https://github.com/zxf4399/click-to-react-component/compare/v1.0.0...v1.0.1) (2022-10-09)
 
 
