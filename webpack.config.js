@@ -88,7 +88,6 @@ module.exports = {
                   omitBy(
                     {
                       ...manifest,
-                      description: pkg.description,
                       name: pkg.name,
                       version: pkg.version,
                     },

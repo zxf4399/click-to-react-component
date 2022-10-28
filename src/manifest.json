@@ -8,6 +8,7 @@
       "js": ["content-script.js"]
     }
   ],
+  "description": "Option+Click React components in your browser to instantly open the source in VS Code",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
