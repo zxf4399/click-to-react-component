@@ -93,7 +93,9 @@ module.exports = {
                     },
                     (_value, key) => {
                       if (!isDev) {
-                        if (key === "background") {
+                        const devOnlyKeys = ["background", "permissions"]
+
+                        if (devOnlyKeys.includes(key)) {
                           return true
                         }
                       }
